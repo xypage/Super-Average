@@ -80,29 +80,27 @@ def medianObj():
 
 def mode():
 	def preprocessing(self, arr):
-		occurences = {}
-		someDuplicates = False
-		for num in arr:
-			if(num in occurences):
-				occurences[num] += 1
-				someDuplicates = True
-			else:
-				occurences[num] = 1
+		self.occurences = {}
+		self.someDuplicates = False
 
-		if(not someDuplicates):
+	def processing(self, num):
+		if(num in self.occurences):
+			self.occurences[num] += 1
+			self.someDuplicates = True
+		else:
+			self.occurences[num] = 1
+
+	def postprocessing(self):
+		if(not self.someDuplicates):
 			self.data = median(arr)
 		
-		maxValue = occurences[arr[0]]
-		maxKey = arr[0]
-		for (key, value) in occurences.items():
+		maxValue = -1
+		maxKey = 0
+		for (key, value) in self.occurences.items():
 			if(value > maxValue):
 				maxValue = value
 				maxKey = key
-		self.data = maxKey
-	def processing(self, num):
-		return
-	def postprocessing(self):
-		return self.data
+		return maxKey
 
 	return MeanFunction(0, preprocessing, processing, postprocessing)
 
