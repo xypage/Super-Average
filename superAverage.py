@@ -2,6 +2,8 @@
 from math import pow, sqrt
 import random
 
+#test
+
 def harmonicMean(arr):
 	denominator = 0
 	for num in arr:
